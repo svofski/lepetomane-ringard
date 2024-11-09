@@ -1,11 +1,41 @@
 # Pétomane ringard
 
-
 A "simple" 3-voice "sound chip" with wavetables.
+
+## Current status: 
+ - [ ] waiting for the first revision of PCB
+ - [ ] research implementation of USB MIDI in Pi Pico (see https://github.com/LouDnl/USBSID-Pico/ for inspiration)
+ - [ ] research making a VU-meter based on CH32V003 (see [CH32V003-Tristate-Multiplexing-LED](https://github.com/limingjie/CH32V003-Tristate-Multiplexing-LED))
+
+## About this project
+
+A never ending search of a simple chiptune synthesizer design that could have existed back in the 1980s. This design departs from the 80s tech available to hobbyists somewhat, but it's not an FPGA fantasy chiptune and it's supposed to make noises using some real chips, even though I have the luxury of using some of the modern tech and tools.
+
+### Description in broad strokes
+
+The master clock is 8MHz. Potentially 10MHz, but it would be pushing the capabilities of 82C54. The timer divides the main frequency and provides the pitch for the 3 channels. 
+
+Waveforms are stored as samples in a ROM. This is essentially a short sample player. A sample is always 256 counts long, 8-bit waveform. For example, a sawtooth would be a sequence of numbers 0..255 stored in addresses 0..255. 
+The ROM has 16 address bits, so there are 256 waveforms. This is how timbre and volume are set: simply by selecting 8 MSB of the sample address. It is possible to define just one waveshape and 256 amplitude levels, or for example 4 waveshapes and 64 amplitude levels. Or several MSB bits could be reserved for selecting drum samples. It's a relatively flexible system.
+
+One important note. Because this is a frequency divider and the base frequency is only 8MHz, we don't get a good resolution if samples represent a single period. For decent musical resolution the waveforms will have to be squeezed to maybe 32 or 64 samples per period.
+
+The 3 channels are time-multiplexed and sent to the two channels of DAC (TLC7258C) in a sequence. In order to provide a stereo mix, channels A/B/C/A/B/C are steered to channels L/L/R/L/R/R. Hopefully this will create an effect of a stereo mix where Left = A + 0.5B and Right = 0.5 + C.
+
+There is a master volume which is just a second DAC providing reference voltage for the main DAC. If the main DAC is stopped, the master volume can be used to play back samples directly.
+
+Channel B (central) can optionally stop after playing a sample once. This may be useful to play back short drum samples.
+
+The MSB for channels A/B/C is set respectively in the registers A/B/C of 82C55. 
+
+Because ROMs are a weird thing in 2024, K6X4008C1F SRAM is used instead. Only 64K of available address space is used. Loading is facilitated by the same 82C55 chip.
+
+The external interface in the Pétomanesque tradition looks like a parallel port "ПУ" of Vector-06C, but in reality it's just a cursed three-row 2.54mm pin header. It is yet to be discovered whether this could ever be useful in a real computer or not. For now Raspberry Pi Pico will be used as a main driver for this board.
 
 ![preview](preview0.jpg)
 
-3 channels are voiced using a 256-byte long 8-bit samples stored in SRAM. The mixing is done by time-multiplexing. The upper 8 bits select waveform. So you can have 256 different waveforms, or several amplitudes, or pre-filtered versions or even complete drump samples.
+The complexity of this design surpasses the original expecation, yet remains within realm of possibility for a 80s design. SRAM would be impossibly expensive, a ROM could be used instead.
 
-## Schematic
-[https://github.com/svofski/lepetomane-ringard/tree/master/kicad/neopeto](https://kicanvas.org/?github=https%3A%2F%2Fgithub.com%2Fsvofski%2Flepetomane-ringard%2Ftree%2Fmaster%2Fkicad%2Fneopeto)
+## Schematic/BOM
+ * [https://github.com/svofski/lepetomane-ringard/tree/master/kicad/neopeto](https://kicanvas.org/?github=https%3A%2F%2Fgithub.com%2Fsvofski%2Flepetomane-ringard%2Ftree%2Fmaster%2Fkicad%2Fneopeto)
+ * [ibom](https://svofski.github.io/lepetomane-ringard/ibom.html)
