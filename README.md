@@ -9,7 +9,7 @@ A "simple" 3-voice "sound chip" with wavetables.
 
 ## About this project
 
-A never ending search of a simple chiptune synthesizer design that could have existed back in the 1980s. This design departs from the 80s tech available to hobbyists somewhat, but it's not an FPGA fantasy chiptune and it's supposed to make noises using some real chips, even though I have the luxury of using some of the modern tech and tools.
+A never ending search of a simple chiptune synthesizer design that could have existed back in the 1980s. This design departs from the tech available to hobbyists in the 80s, but it's not too out there either. 
 
 ### Description in broad strokes
 
