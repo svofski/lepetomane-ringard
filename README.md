@@ -5,7 +5,9 @@ A "simple" 3-voice "sound chip" with wavetables.
 ## Current status: 
  - [ ] waiting for the first revision of PCB
  - [ ] research implementation of USB MIDI in Pi Pico (see https://github.com/LouDnl/USBSID-Pico/ for inspiration)
- - [ ] research making a VU-meter based on CH32V003 (see [CH32V003-Tristate-Multiplexing-LED](https://github.com/limingjie/CH32V003-Tristate-Multiplexing-LED))
+ - [x] audio level meter based on CH32V003
+    - [CH32V003 specific notes](CH32V003-notes.md)
+    - The code for the level meter is [here](wch-ch32v003/pio-arduino-ch32v003)
 
 ## About this project
 
