@@ -23,9 +23,6 @@
 
 #include <Arduino.h>
 
-#define RANDOM_STRENGTH    2
-#define CH32V003           1
-
 #include "ch32v003fun.h"
 #include "polling_adc.h"
 #include "cplex.h"
@@ -49,6 +46,7 @@ void setup() {
     delay(5000);  // initial delay to ensure that the chip always can be programmed
 
     polling_adc::init();
+    polling_adc::begin_continuous();
 }
 
 // for libm, if it's used
@@ -58,7 +56,8 @@ void loop()
 {
     for (int i = 0; i < LED_COUNT; ++i) {
         levelmeter.display_tick();
-        levelmeter.sample(polling_adc::get());
+        levelmeter.sample(polling_adc::get_continuous());
+        delayMicroseconds(3);
     }
     levelmeter.update_bitmap();
 

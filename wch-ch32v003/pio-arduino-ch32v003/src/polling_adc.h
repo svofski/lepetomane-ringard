@@ -12,4 +12,7 @@ void init( void );
  */
 uint16_t get( void );
 
+void begin_continuous(void);
+uint16_t get_continuous(void);
+
 }
