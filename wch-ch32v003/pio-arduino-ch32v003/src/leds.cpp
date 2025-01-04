@@ -28,7 +28,6 @@
 
 #include "ch32v003fun.h"
 #include "polling_adc.h"
-#include <cmath>
 #include "cplex.h"
 #include "bitmap.h"
 #include "levelmeter.h"
