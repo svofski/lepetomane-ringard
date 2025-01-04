@@ -10934,6 +10934,12 @@
 		(uuid "38868c10-ba61-41cd-ab2d-40d4ce67ce03")
 	)
 	(junction
+		(at 421.64 281.94)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "39e0430f-1537-4eb2-846d-4f37dff3378f")
+	)
+	(junction
 		(at 530.86 259.08)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -12642,16 +12648,6 @@
 			(type default)
 		)
 		(uuid "1e2dc38b-662d-4e78-b64b-e120ab709c9d")
-	)
-	(wire
-		(pts
-			(xy 405.13 281.94) (xy 416.56 281.94)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1ead66d6-7391-4438-9b60-1621bfe1e097")
 	)
 	(wire
 		(pts
@@ -14702,6 +14698,16 @@
 			(type default)
 		)
 		(uuid "6c35c9e1-0a13-45db-9579-a6eab36d4283")
+	)
+	(wire
+		(pts
+			(xy 405.13 281.94) (xy 421.64 281.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6c583748-4110-4d6e-bcfd-a2e4974253cd")
 	)
 	(wire
 		(pts
@@ -21661,10 +21667,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "0ed9c548-ea82-451d-956e-b0174597ec6c")
 		(property "Reference" "U1"
-			(at 107.9417 31.75 0)
+			(at 104.14 27.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21672,7 +21677,7 @@
 			)
 		)
 		(property "Value" "74HC00"
-			(at 107.9417 34.29 0)
+			(at 110.49 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22652,10 +22657,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "1b6920f1-3157-49f1-9a72-c92b90e73adf")
 		(property "Reference" "U24"
-			(at 83.5152 44.45 0)
+			(at 81.28 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22668,6 +22672,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Package_SO:SO-14_3.9x8.65mm_P1.27mm"
@@ -24148,10 +24153,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "2da1d224-6753-4672-8dfe-3b46cc96d087")
 		(property "Reference" "U24"
-			(at 83.5152 34.29 0)
+			(at 81.28 30.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24159,7 +24163,7 @@
 			)
 		)
 		(property "Value" "74HC86"
-			(at 83.5152 36.83 0)
+			(at 88.9 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31834,10 +31838,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "9304b299-3522-4fc1-893e-0a2ebdcee43c")
 		(property "Reference" "U24"
-			(at 83.5152 57.15 0)
+			(at 81.28 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31850,6 +31853,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Package_SO:SO-14_3.9x8.65mm_P1.27mm"
@@ -32418,10 +32422,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "9aaf4b74-2c02-4779-b2c5-d63da772b8d0")
 		(property "Reference" "U1"
-			(at 107.9417 53.34 0)
+			(at 104.14 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -32434,6 +32437,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Package_SO:SO-14_3.9x8.65mm_P1.27mm"
@@ -34699,7 +34703,8 @@
 	)
 	(symbol
 		(lib_id "Device:LED_Small")
-		(at 469.9 241.3 270)
+		(at 469.9 241.3 90)
+		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -34707,7 +34712,7 @@
 		(dnp no)
 		(uuid "b4ac0b37-e2c8-4b9b-9945-566ebcdc7125")
 		(property "Reference" "D1"
-			(at 468.884 236.982 90)
+			(at 470.916 236.982 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -34716,7 +34721,7 @@
 			)
 		)
 		(property "Value" "LED_Small"
-			(at 472.44 242.6334 90)
+			(at 467.36 242.6334 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -35345,10 +35350,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "bb4ec144-e7ba-4818-b459-62f70fc2e374")
 		(property "Reference" "U1"
-			(at 107.9417 41.91 0)
+			(at 104.14 30.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -35361,6 +35365,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Package_SO:SO-14_3.9x8.65mm_P1.27mm"
