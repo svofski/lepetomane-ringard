@@ -18487,6 +18487,16 @@
 		)
 		(uuid "42726270-cc2d-40fe-b45f-8450e842c28a")
 	)
+	(text "TO PROGRAMMER"
+		(exclude_from_sim no)
+		(at 436.88 224.79 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "6d8213be-5df5-41bc-87d6-ed8b22ed82d1")
+	)
 	(text "when 0, CHOP_x==1, counters tri-stated"
 		(exclude_from_sim no)
 		(at 99.822 18.288 0)
