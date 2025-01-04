@@ -22,6 +22,16 @@ The platform ch32v will not auto-install. It can be installed using this command
 ```
 pio pkg install -g -p https://github.com/Community-PIO-CH32V/platform-ch32v.git
 ```
-Check out the repo for examples. There is an Arduino framework, same as in the IDE and CNLohr's ch32v003fun.
+Check out the repo for examples. There is an Arduino framework, same as the one used in Arduino IDE as well as [CNLohr's ch32v003fun](https://github.com/cnlohr/ch32v003fun).
 The main repo for ch32v003fun https://github.com/cnlohr/ch32v003fun
 
+### Pinout
+![ch32v003j4m6 pinout](https://raw.githubusercontent.com/Tengo10/pinout-overview/main/pinouts/CH32v003/ch32v003j4m6.svg)
+
+### Floating point
+
+It seems to be that it's enough to specify build_flags in `platformio.ini` like so:
+```
+build_flags = -lgcc -lm
+```
+However it results in unresolved reference to `__errno` from `sqrtf` or something else. There is probably a proper way of helping this, but I solved it by defining `int __errno` in the main source file.
