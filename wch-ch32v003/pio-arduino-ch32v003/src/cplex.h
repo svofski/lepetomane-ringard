@@ -57,18 +57,8 @@ struct Charlieplexor5
 
     static void switchOn(int led)
     {
-        digitalWrite(A, LOW);
-        digitalWrite(B, LOW);
-        digitalWrite(C, LOW);
-        digitalWrite(D, LOW);
-        digitalWrite(E, LOW);
-
-        // set all the pin modes
-        pinMode(A, (PinMode)matrix[led][PIN_CONFIG][0]);
-        pinMode(B, (PinMode)matrix[led][PIN_CONFIG][1]);
-        pinMode(C, (PinMode)matrix[led][PIN_CONFIG][2]);
-        pinMode(D, (PinMode)matrix[led][PIN_CONFIG][3]);
-        pinMode(E, (PinMode)matrix[led][PIN_CONFIG][4]);
+        // avoid leaks across branches
+        switchOff();
 
         // set all the pin states
         digitalWrite(A, (PinStatus)matrix[led][PIN_STATE][0]);
@@ -76,10 +66,24 @@ struct Charlieplexor5
         digitalWrite(C, (PinStatus)matrix[led][PIN_STATE][2]);
         digitalWrite(D, (PinStatus)matrix[led][PIN_STATE][3]);
         digitalWrite(E, (PinStatus)matrix[led][PIN_STATE][4]);
+
+        // set all the pin modes
+        pinMode(A, (PinMode)matrix[led][PIN_CONFIG][0]);
+        pinMode(B, (PinMode)matrix[led][PIN_CONFIG][1]);
+        pinMode(C, (PinMode)matrix[led][PIN_CONFIG][2]);
+        pinMode(D, (PinMode)matrix[led][PIN_CONFIG][3]);
+        pinMode(E, (PinMode)matrix[led][PIN_CONFIG][4]);
     }
 
     static void switchOff()
     {
+#ifdef FAST_SWITCHOFF
+        // this doesn't respect pin parameters, but reduces parasitic lights
+        GPIOD->OUTDR = 0;
+        GPIOC->OUTDR = 0;
+        GPIOD->CFGLR = 0x44444444; // all floating inputs
+        GPIOC->CFGLR = 0x44444444; // all floating inputs
+#else
         digitalWrite(A, LOW);
         digitalWrite(B, LOW);
         digitalWrite(C, LOW);
@@ -91,5 +95,6 @@ struct Charlieplexor5
         pinMode(C, INPUT);
         pinMode(D, INPUT);
         pinMode(E, INPUT);
+#endif
     }
 };
