@@ -42,8 +42,11 @@ This is the complete schematics. There are 3 test pads used for connecting the p
 Example layout on my PCB. Relevant parts are highlighted. The LEDs are 0402.
 ![layout](/doc/levelmeter-pcb.png)
 
+## Building
+
+The project builds using PlatformIO. See [CH32V003 notes](/CH32V003-notes.md) about setting up the environment.
 
 ## Things to improve
 
- * ADC work is crude, although it doesn't really affect anything
+ * ADC work is crude.
 
