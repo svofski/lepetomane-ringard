@@ -26,7 +26,6 @@
 #define RANDOM_STRENGTH    2
 #define CH32V003           1
 
-#include "lib_rand.h"
 #include "ch32v003fun.h"
 #include "polling_adc.h"
 #include <cmath>
