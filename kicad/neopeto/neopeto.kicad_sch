@@ -26505,7 +26505,7 @@
 				)
 			)
 		)
-		(property "Value" "470"
+		(property "Value" "100"
 			(at 463.55 259.08 90)
 			(effects
 				(font
@@ -27604,7 +27604,7 @@
 				)
 			)
 		)
-		(property "Value" "470"
+		(property "Value" "100"
 			(at 463.55 248.92 90)
 			(effects
 				(font
@@ -28223,7 +28223,7 @@
 				)
 			)
 		)
-		(property "Value" "470"
+		(property "Value" "100"
 			(at 463.804 238.76 90)
 			(effects
 				(font
@@ -28829,7 +28829,7 @@
 				)
 			)
 		)
-		(property "Value" "470"
+		(property "Value" "100"
 			(at 463.55 243.84 90)
 			(effects
 				(font
@@ -40554,7 +40554,7 @@
 				)
 			)
 		)
-		(property "Value" "470"
+		(property "Value" "100"
 			(at 463.55 254 90)
 			(effects
 				(font
