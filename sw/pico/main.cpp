@@ -6,11 +6,15 @@
 #include "bsp/board.h"
 #include "tusb.h"
 
+#include "petomane.h"
+
 enum  {
     BLINK_NOT_MOUNTED = 250,
     BLINK_MOUNTED = 1000,
     BLINK_SUSPENDED = 2500,
 };
+
+Petomane petomane;
 
 static uint32_t blink_interval_ms = BLINK_NOT_MOUNTED;
 const uint LED_PIN = PICO_DEFAULT_LED_PIN;
@@ -20,8 +24,8 @@ void midi_task(void);
 
 int main() {
     board_init();
-
     stdio_init_all();
+    petomane.board_init();
 
     tud_init(BOARD_TUD_RHPORT);
 

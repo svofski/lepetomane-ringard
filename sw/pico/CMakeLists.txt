@@ -12,6 +12,7 @@ add_executable(ringard
   main.cpp
   usb_descriptors.c
   reset.c
+  petomane.cpp
 )
 
 pico_enable_stdio_usb(ringard 1)
