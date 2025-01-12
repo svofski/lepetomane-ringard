@@ -1,3 +1,6 @@
+#include <array>
+#include <cstdlib>
+
 #include <stdio.h>
 #include "pico/stdlib.h"
 #include "hardware/gpio.h"
@@ -22,6 +25,127 @@ const uint LED_PIN = PICO_DEFAULT_LED_PIN;
 void led_blinking_task(void);
 void midi_task(void);
 
+struct DebugMonitor
+{
+    Petomane& petomane;
+    std::array<char, 64> cmdbuf;
+    int bufindex;
+    int wrn = 0;
+
+    DebugMonitor(Petomane& p): petomane(p), bufindex(0) {}
+
+    void task()
+    {
+        int c = getchar_timeout_us(10);
+        if (c >= 0 && c <= 255) {
+            if (c == '\r') {
+                c = '\n';
+            }
+            putchar(c);
+            if (c == '\n' || bufindex >= cmdbuf.size() - 1) {
+                c = 0;
+            }
+            cmdbuf[bufindex++] = c;
+            if (c == 0) {
+                if (bufindex > 1) {
+                    process_cmd();
+                }
+                bufindex = 0;
+            }
+        }
+    }
+
+    void process_cmd()
+    {
+        int result = 0;
+        switch (cmdbuf[0]) {
+            case 'd':
+                result = process_div();
+                break;
+            case 'b':
+                result = process_bus();
+                break;
+            case 'w':
+                gpio_put(15, wrn);
+                wrn ^= 1;
+                break;
+            default:
+                printf("unknown command: [%s]\n", &cmdbuf[0]);
+                break;
+        }
+
+        if (result == 0) {
+            printf("OK\n");
+        }
+        else {
+            printf("ERROR\n");
+        }
+    }
+
+    void skip_whitespace(int& pos)
+    {
+        while ((cmdbuf[pos] == ' ' || cmdbuf[pos] == '\t') && pos < cmdbuf.size()) ++pos;
+    }
+
+    // d 0 1234 -- sets chan 0 divider to 1234 decimal
+    int process_div()
+    {
+        int pos = 1;
+
+        // first arg
+        skip_whitespace(pos);
+        if (pos >= cmdbuf.size()) return -1;
+        int chan = cmdbuf[pos] - '0';
+        if (chan < 0 || chan > 2) return -1;
+
+        // second arg
+        ++pos; 
+        skip_whitespace(pos);
+        if (pos >= cmdbuf.size()) return -1;
+
+        int div = atoi(&cmdbuf[pos]);
+        if (div < 0 || div > 65535) return -1;
+
+        printf("set div[%d]=%d\n", chan, div);
+        petomane.set_enabled(chan, true);
+        petomane.set_div(chan, div);
+
+        return 0;
+    }
+
+    // set bus
+    // b a b -- abus = a, dbus = b
+    // 0-3 = PPI
+    // 4-7 = TIMER
+    // 8-9 = MVOL
+    int process_bus()
+    {
+        int pos = 1;
+
+        // first arg
+        skip_whitespace(pos);
+        if (pos >= cmdbuf.size()) return -1;
+        int a = cmdbuf[pos] - '0';
+        if (a < 0 || a > 9) return -1;
+
+        // second arg
+        ++pos; 
+        skip_whitespace(pos);
+        if (pos >= cmdbuf.size()) return -1;
+
+        uint8_t dbus = atoi(&cmdbuf[pos]) & 0xff;
+
+        int dev = (a & 0xc) >> 2;
+        int reg = a & 3;
+        printf("set bus dev=%d reg=%d D=%02x\n", dev, reg, dbus);
+        petomane.bsr_dev(dev, reg, 0, dbus);
+
+        return 0;
+    }
+};
+
+DebugMonitor debug_monitor(petomane);
+
 int main() {
     board_init();
     stdio_init_all();
@@ -35,8 +159,8 @@ int main() {
     {
         tud_task(); // tinyusb device task
         led_blinking_task();
-        midi_task();
-        //cdc_task();
+        //midi_task();
+        debug_monitor.task();
     }
 }
 

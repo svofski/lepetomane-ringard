@@ -11969,16 +11969,6 @@
 		)
 		(uuid "07a9c4b7-c291-469f-ac35-bd015c4d378d")
 	)
-	(polyline
-		(pts
-			(xy 65.405 52.705) (xy 65.405 19.685)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "07fd2cff-825d-4c4f-83c0-d415f3579426")
-	)
 	(wire
 		(pts
 			(xy 115.57 40.64) (xy 116.84 40.64)
@@ -12398,6 +12388,16 @@
 			(type default)
 		)
 		(uuid "15d120fe-0a1c-48fd-b738-2f133d47a1cf")
+	)
+	(polyline
+		(pts
+			(xy 65.405 29.21) (xy 65.405 38.735)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "169209dd-b92b-46d8-88dd-b426691ce4c0")
 	)
 	(wire
 		(pts
@@ -13879,6 +13879,16 @@
 		)
 		(uuid "4a1b0f26-7ad4-43ab-9b81-3e29069a404b")
 	)
+	(polyline
+		(pts
+			(xy 55.88 29.21) (xy 65.405 29.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4a302984-4c01-405a-9897-009e07ddc16c")
+	)
 	(wire
 		(pts
 			(xy 246.38 35.56) (xy 283.21 35.56)
@@ -14558,6 +14568,16 @@
 			(type default)
 		)
 		(uuid "660ade81-84e5-46ca-bc62-3a57c2e6e087")
+	)
+	(polyline
+		(pts
+			(xy 236.22 52.705) (xy 236.22 59.055)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6662d631-df27-460d-9ffa-a294f46a2773")
 	)
 	(wire
 		(pts
@@ -15498,16 +15518,6 @@
 			(type default)
 		)
 		(uuid "877a9929-918d-4f83-9cb8-845e3a0b3350")
-	)
-	(polyline
-		(pts
-			(xy 65.405 8.89) (xy 65.405 19.685)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "87b99347-7371-4049-880c-af6a00a60754")
 	)
 	(wire
 		(pts
@@ -16829,6 +16839,16 @@
 		)
 		(uuid "c3d955b1-bec4-46a6-b334-ec3e50637aea")
 	)
+	(polyline
+		(pts
+			(xy 190.5 59.055) (xy 236.22 59.055)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c3e9eb89-c6f6-4816-8343-afb8cd8776c8")
+	)
 	(wire
 		(pts
 			(xy 213.36 386.08) (xy 227.33 386.08)
@@ -17399,16 +17419,6 @@
 		)
 		(uuid "da4fd0ac-97ca-44f9-aa40-e81d7d0faa9a")
 	)
-	(polyline
-		(pts
-			(xy 125.73 8.89) (xy 172.085 8.89)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "daa354f4-1338-4fd7-ab66-dbe7185b31d4")
-	)
 	(wire
 		(pts
 			(xy 382.27 30.48) (xy 392.43 30.48)
@@ -17568,16 +17578,6 @@
 			(type default)
 		)
 		(uuid "e27af5a5-d5ff-42e2-b160-2cbd5e190aac")
-	)
-	(polyline
-		(pts
-			(xy 125.73 36.83) (xy 125.73 8.89)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e27b1b3b-bfbb-470f-b16c-e646b090b285")
 	)
 	(wire
 		(pts
@@ -18472,7 +18472,8 @@
 		(uuid 108fc82a-f2fa-4795-bf5f-9bf96db66058)
 	)
 	(image
-		(at 55.88 -3.175)
+		(at 57.15 20.955)
+		(scale 0.389478)
 		(uuid "65933dde-b04d-4c8d-a3e9-537e07e9b6a9")
 		(data "iVBORw0KGgoAAAANSUhEUgAAAeAAAAEQCAIAAADnJDDbAAAgAElEQVR4nO19LZjiyPf1+b9PxBWI"
 			"Ei0iWkS0QIyIaIEYgRiBGIEYgRiB+AnEihYrECMQKxAjECsQKxArECsQKxAjIlYgRiBGIEYgRkS0"
@@ -18788,7 +18789,7 @@
 		)
 	)
 	(image
-		(at 151.765 30.48)
+		(at 153.035 36.195)
 		(scale 0.25)
 		(uuid "f7175c15-b961-40c7-805a-8f32bd497eae")
 		(data "iVBORw0KGgoAAAANSUhEUgAAAf0AAAGBCAIAAADjTv9lAAAA0mVYSWZJSSoACAAAAAoAAAEEAAEA"
@@ -19159,6 +19160,17 @@
 			"j94AAAAASUVORK5CYII="
 		)
 	)
+	(text "TEST: CTR0 div=100\nPITCHx256_A = 80kHz\nU10.~{RCO} = 312.5Hz"
+		(exclude_from_sim no)
+		(at 190.5 55.88 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "029f0c1d-f0a0-4202-bdfd-fb00c793509f")
+	)
 	(text "SAMPLE ADDR MSB\n~{WRMODE}=1\n~{SRAM_OE}=0"
 		(exclude_from_sim no)
 		(at 137.16 292.1 0)
@@ -19276,7 +19288,7 @@
 	)
 	(text "1.33 MHz"
 		(exclude_from_sim no)
-		(at 60.325 22.225 0)
+		(at 60.325 27.94 0)
 		(effects
 			(font
 				(size 1.27 1.27)
