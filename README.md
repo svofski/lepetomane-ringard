@@ -9,10 +9,19 @@ A "simple" 3-voice "sound chip" with wavetables.
  - [x] audio level meter based on CH32V003
     - [CH32V003 specific notes](CH32V003-notes.md)
     - The code for the level meter is [here](wch-ch32v003/pio-arduino-ch32v003)
- - [ ] assemble the PCB
+ - [x] assemble the PCB
    - [x] audio level meter
    - [x] Pi Pico host board
-   - [ ] main board
+   - [x] main board
+ - [ ] verification
+   - [x] write a simple serial debug monitor
+   - [x] 82c54 can be programmed, produces frequencies as expected
+   - [x] counters U10, U11, U12 generate LSB addresses
+     - this is hard to verify without a full logic probe (and even with one) but the counting period seems to be correct. I set ctr0 divider = 100, PITCHx256_A is 80kHz; pin U10.9 nRCO has short pulses at 312.5kHz, which is expected because 80e3/256 = 312.5
+   - [ ] 82c55
+   - [ ] MVOL DAC
+   - [ ] WRMODE
+   - [ ] LOOPEN_B (one-shot count on channel B)
 
 ## About this project
 
